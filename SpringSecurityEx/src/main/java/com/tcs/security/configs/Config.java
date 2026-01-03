@@ -44,7 +44,7 @@ public class Config {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		http
 			.authorizeHttpRequests(auth->auth
-		    .requestMatchers("/login","/wel","/WEB-INF/**").permitAll()
+		    .requestMatchers("/login","/wel","/register","/WEB-INF/**").permitAll()
 		    .anyRequest().authenticated()
 		    )
 		    .formLogin(form->form

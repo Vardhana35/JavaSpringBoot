@@ -1,1 +1,1 @@
-<h1>This is sample.</h1>
+<h1>Welcome to the Application.</h1>

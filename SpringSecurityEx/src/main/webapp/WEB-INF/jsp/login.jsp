@@ -1,6 +1,20 @@
-<form action="/login" method="POST">
-	     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		Username: <input type="text" name="username"/><br>
-		Password: <input type="text" name="password"/>
-	  <input type="submit" value="login"/>
-</form>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Custom Login Page</h2>
+    <form action="/login" method="POST">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        
+        <label for="username">username:</label>
+        <input type="text" id="username" name="username" required/><br><br>
+        
+        <label for="password">password:</label>
+        <input type="password" id="password" name="password" required/><br><br>
+        
+        <input type="submit" value="Login"/>
+    </form>
+</body>
+</html>

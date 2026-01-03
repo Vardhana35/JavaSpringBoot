@@ -23,6 +23,8 @@ public class User implements UserDetails {
 
     @Column
     private String details;
+    
+    private String confirmPassword;
 
     @Column(name = "group_permission")
     private String groupPermission;
