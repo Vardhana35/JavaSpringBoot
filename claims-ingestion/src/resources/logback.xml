@@ -1,0 +1,41 @@
+<configuration>
+  <!-- Console appender: prints logs to the terminal/console -->
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <!-- Pattern defines how each log line looks:
+           %d = date/time
+           %-5level = log level (INFO, WARN, ERROR)
+           %logger{36} = logger name (max 36 chars)
+           %msg = the actual log message
+           %n = new line -->
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- File appender: writes logs to a file on disk -->
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- The main log file where logs are written -->
+    <file>logs/claims-ingestion.log</file>
+
+    <!-- Rolling policy: controls how log files are rotated -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- Each day a new log file is created with the date in its name -->
+      <fileNamePattern>logs/claims-ingestion.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <!-- Keep logs for the last 7 days, older files are deleted -->
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
+
+    <encoder>
+      <!-- Same log format as console -->
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Root logger: defines the default logging level and appenders -->
+  <root level="INFO">
+    <!-- Send logs to console -->
+    <appender-ref ref="CONSOLE"/>
+    <!-- Send logs to file -->
+    <appender-ref ref="FILE"/>
+  </root>
+</configuration>
